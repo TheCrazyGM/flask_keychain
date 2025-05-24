@@ -49,10 +49,12 @@ document
             .then((r) => r.json())
             .then((data) => {
               if (data.success) {
-                status.textContent = "Login successful!";
+                let msg = "Login successful! <br>";
                 if (data.token) {
                   localStorage.setItem("token", data.token);
+                  msg += ` Token: <code>${data.token}</code> <br>`;
                 }
+                status.innerHTML = msg;
               } else {
                 status.textContent = data.error || "Login failed.";
               }
